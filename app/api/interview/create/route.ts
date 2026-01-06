@@ -4,11 +4,21 @@ import { db, auth as adminAuth } from "@/firebase/admin";
 
 export async function POST(req: Request) {
     const body = await req.json();
-    const { role, level, interviewType, numQuestions = 5, idToken } = body || {};
+    const {
+        idToken,
+        role,
+        level,
+        interviewType,
+        goal,
+        difficulty,
+        numQuestions = 5,
+        questionStyle = "Mixed",
+        personality = "Neutral",
+    } = body || {};
 
-    if (!role || !level || !interviewType || !idToken) {
+    if (!idToken || !role || !level || !interviewType) {
         return Response.json(
-            { success: false, error: "Missing role/level/interviewType/idToken" },
+            { success: false, error: "Missing idToken/role/level/interviewType" },
             { status: 400 }
         );
     }
@@ -20,21 +30,24 @@ export async function POST(req: Request) {
         const { text } = await generateText({
             model: google("gemini-2.0-flash-001"),
             prompt: `
-You are PrepPilot. Generate ${numQuestions} interview questions.
-
 Return JSON ONLY:
-{
-  "questions": ["...", "..."]
-}
+{ "questions": ["...","..."] }
 
-Interview Type: ${interviewType}
-Role: ${role}
-Level: ${level}
+Generate ${numQuestions} interview questions.
+
+Context:
+- Interview Type: ${interviewType}
+- Role: ${role}
+- Level: ${level}
+- Goal: ${goal || "N/A"}
+- Difficulty: ${difficulty || "Medium"}
+- Style: ${questionStyle}
+- Interviewer personality: ${personality}
 
 Rules:
-- Short, clear questions
-- No numbering, no markdown
-- Practical, India job market friendly
+- No markdown, no numbering
+- Keep them realistic for India job market
+- Keep each question clear and not too long
 `.trim(),
         });
 
@@ -48,19 +61,21 @@ Rules:
 
         const questions: string[] = Array.isArray(parsed?.questions) ? parsed.questions : [];
         if (!questions.length) {
-            return Response.json(
-                { success: false, error: "Failed to generate questions" },
-                { status: 500 }
-            );
+            return Response.json({ success: false, error: "Failed to generate questions" }, { status: 500 });
         }
 
         const ref = db.collection("interviews").doc();
+
         await ref.set({
             id: ref.id,
             userId,
             role,
             level,
             interviewType,
+            goal: goal || null,
+            difficulty: difficulty || null,
+            questionStyle,
+            personality,
             questions,
             status: "in_progress",
             createdAt: new Date().toISOString(),

@@ -6,8 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="368d2cd3-3686-4233-b37c-3c28ce1c57dd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(auth)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(root)/interview/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(root)/interview/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firebase/client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/firebase/client.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(root)/past-interviews/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(root)/past-interviews/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(root)/past-interviews/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(root)/past-interviews/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/interview/create/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/interview/create/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/AppHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/AppHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/AuthForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/AuthForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/InterviewRunner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/InterviewRunner.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +122,7 @@
       <workItem from="1767560715224" duration="11151000" />
       <workItem from="1767634805153" duration="313000" />
       <workItem from="1767641687169" duration="1271000" />
-      <workItem from="1767643669221" duration="9901000" />
+      <workItem from="1767643669221" duration="17096000" />
     </task>
     <servers />
   </component>
